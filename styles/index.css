@@ -1,0 +1,44 @@
+/* ===== Charte Pictet =====
+   Le rouge est dans UNE variable : remplace --pictet-red par le hex exact de la charte
+   interne et tout se met à jour (titres, accents, footer). */
+:root {
+  --pictet-red: #A04044;
+}
+
+/* Titres en rouge Pictet */
+.slidev-layout h1 {
+  color: var(--pictet-red);
+}
+
+/* Petit filet rouge sous le titre, pour le punch */
+.slidev-layout h1::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: 0.4rem;
+  background: var(--pictet-red);
+  border-radius: 2px;
+}
+
+/* Liens et code inline en rouge Pictet */
+.slidev-layout a {
+  color: var(--pictet-red);
+}
+
+/* Cover (slide 1) : titre rouge, filet centré */
+.slidev-layout.text-center h1::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Logo Pictet en bas à droite, ancré DANS chaque slide (pas en overlay viewport) */
+.pictet-footer {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.7rem;
+  z-index: 50;
+  height: 1.5rem;
+  opacity: 0.95;
+  pointer-events: none;
+}

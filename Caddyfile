@@ -1,0 +1,5 @@
+# HTTPS automatique sur ton domaine, reverse proxy vers le serveur Slidev.
+# Le websocket (serverRef, pour les votes) est relayé automatiquement.
+{$DOMAIN} {
+	reverse_proxy presentation:3030
+}

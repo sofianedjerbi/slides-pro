@@ -1,0 +1,43 @@
+# Auto-hébergé, zéro compte tiers : la présentation Slidev derrière Caddy, qui gère le
+# HTTPS automatiquement sur ton domaine.
+#
+#   DOMAIN=slides.tondomaine.com docker compose up -d
+#
+# Prérequis sur le VPS :
+#   un enregistrement DNS A (DOMAIN vers l'IP du VPS), ports 80 et 443 ouverts
+#   (Caddy en a besoin pour Let's Encrypt et le trafic).
+
+services:
+  # Le deck Slidev, servi en live.
+  presentation:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./:/app
+      - deck_modules:/app/node_modules
+    command: sh -c "npm install --omit=dev && npx slidev --port 3030"
+    expose:
+      - "3030"
+    restart: unless-stopped
+
+  # Reverse proxy + HTTPS automatique (Let's Encrypt) sur ton domaine.
+  caddy:
+    image: caddy:2
+    depends_on: [presentation]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: "${DOMAIN:?Definis la variable DOMAIN, ex DOMAIN=slides.tondomaine.com}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  deck_modules:
+  caddy_data:
+  caddy_config:
