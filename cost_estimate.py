@@ -39,6 +39,9 @@ FARGATE_GB_HOUR   = 0.00598
 # us-east-1). Atlas is third-party SaaS with no public Zurich rate -> estimate.
 ATLAS_NODE_HOUR = 2.60
 ATLAS_NODES = 3
+# Right-sized: only PROD needs M50. Non-prod on M30 (8 GB / 2 vCPU),
+# base $0.54/node -> ~$0.70 with the Zurich premium.
+ATLAS_NONPROD_NODE_HOUR = 0.70
 
 # ---- Amazon DocumentDB (db.r6g.xlarge = 4 vCPU / 32 GB), 3 instances ----
 # Zurich, standard storage -- from AWS Price List API.
@@ -67,6 +70,16 @@ MIGRATION_MD = {
 }
 DAY_RATE_USD = 1200             # blended day rate, assumed (edit)
 FTE_DAYS_PER_YEAR = 220
+
+# ---- Phase 2 development effort (cloud-native refactor) ----
+MIGRATION_MD_P2 = {
+    "Replace the in-memory data grid": 120,
+    "Stateless, scalable core": 80,
+    "Function workloads to FaaS": 70,
+    "Event-driven and observability": 60,
+    "Testing and hardening": 60,
+    "Project management": 40,
+}
 
 N = len(ENVIRONMENTS)
 
@@ -101,6 +114,12 @@ def storage_other_env():
 def atlas_total():
     return atlas_env() * N
 
+def atlas_rightsized_total():
+    # PROD on M50, the 4 non-prod envs on M30
+    prod = ATLAS_NODE_HOUR * ATLAS_NODES * HOURS_PER_MONTH
+    nonprod = ATLAS_NONPROD_NODE_HOUR * ATLAS_NODES * HOURS_PER_MONTH * (N - 1)
+    return prod + nonprod
+
 def docdb_total(stop_nonprod=False):
     frac_off = db_on_fraction_stopped()
     total = 0.0
@@ -130,6 +149,7 @@ def main():
     cf = compute_fraction_scaled()
 
     a = scenario("A  Atlas, 24/7 (MAJORANT)", 1.0, atlas_total())
+    a2 = scenario("A' Atlas right-sized, 24/7 (prod M50, non-prod M30) -- REPLATFORM", 1.0, atlas_rightsized_total())
     b = scenario("B  Atlas + compute scaled 80% off-hours", cf, atlas_total())
     c = scenario("B' DocumentDB (24/7) + compute scaled", cf, docdb_total(stop_nonprod=False))
     d = scenario("B'' DocumentDB, non-prod STOPPED off-hours + compute scaled", cf, docdb_total(stop_nonprod=True))
@@ -160,6 +180,18 @@ def main():
     print(f"  {'Subtotal':<38} {tot:>4} MD")
     print(f"  {'+ ' + str(int(marg*100)) + '% margin':<38} {tot*marg:>4.0f} MD")
     print(f"  {'TOTAL with margin':<38} {with_m:>4.0f} MD  (~{with_m/FTE_DAYS_PER_YEAR:.1f} FTE-year)")
+
+    print("\n" + "=" * 60)
+    print("PHASE 2 DEVELOPMENT EFFORT (cloud-native refactor)")
+    print("=" * 60)
+    tot2 = sum(MIGRATION_MD_P2.values())
+    for name, md in MIGRATION_MD_P2.items():
+        print(f"  {name:<38} {md:>4} MD")
+    print("-" * 60)
+    with_m2 = tot2 * (1 + marg)
+    print(f"  {'Subtotal':<38} {tot2:>4} MD")
+    print(f"  {'+ ' + str(int(marg*100)) + '% margin':<38} {tot2*marg:>4.0f} MD")
+    print(f"  {'TOTAL with margin':<38} {with_m2:>4.0f} MD  (~{with_m2/FTE_DAYS_PER_YEAR:.1f} FTE-year)")
     print("\nList prices, eu-central-2 (Zurich). DocumentDB has no 20% mode: off-hours = full")
     print("cluster stop (instances $0, storage still billed), non-prod only.")
 

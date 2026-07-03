@@ -87,11 +87,10 @@ a single door into Pictet. Quotes and trades are documented automatically.
 </div>
 
 <div class="col-span-2 flex flex-col gap-2.5 text-sm">
+<div class="px-3 py-2 rounded-lg border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red); background:#fbeef0"><lucide-compass class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Pictet's cloud strategy</b><br/><span class="text-xs opacity-55">LionX aligns with the group's move to AWS</span></div></div>
+<div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-minimize-2 class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Simplify</b><br/><span class="text-xs opacity-55">on-prem infra back to industry standards</span></div></div>
 <div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-cloud class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Cloud-native</b><br/><span class="text-xs opacity-55">AWS flexibility, autoscaling on peaks</span></div></div>
-<div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-sliders-horizontal class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Full control</b><br/><span class="text-xs opacity-55">over development, operations and infrastructure</span></div></div>
-<div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-trending-up class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Scalable &amp; auditable</b><br/><span class="text-xs opacity-55">a foundation built for growth and compliance</span></div></div>
-<div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-git-merge class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Continuity first</b><br/><span class="text-xs opacity-55">replatform as-is, then improve over time</span></div></div>
-</div>
+<div class="px-3 py-2 rounded-lg bg-white border border-gray-200 border-l-4 shadow-sm flex items-start gap-3" style="border-left-color: var(--pictet-red)"><lucide-sliders-horizontal class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--pictet-red)"/><div><b>Full control</b><br/><span class="text-xs opacity-55">over development, operations and infrastructure</span></div></div></div>
 
 </div>
 
@@ -100,26 +99,30 @@ a single door into Pictet. Quotes and trades are documented automatically.
 <!--
 The migration is about control and modernization, without breaking what works. Iso-functional
 first, cloud-native gains next.
+
+Strategie migrations pictet
 -->
 
 ---
 
-# What holds us back today
+# Today's infrastructure limits
 
-<div class="text-sm opacity-70 -mt-1">The on-prem stack works, but it shows its limits.</div>
+<div class="text-sm opacity-70 -mt-1">The on-prem stack works, but it shows its limits. AWS addresses each one.</div>
 
 <div class="grid grid-cols-2 grid-rows-2 gap-5 mt-6 h-[21rem] text-left">
 
-<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-database class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Single-node MongoDB</b><br/><span class="text-sm opacity-60">reliability and architecture at risk</span></div></div>
-<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-move-horizontal class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">No horizontal scaling</b><br/><span class="text-sm opacity-60">several components cannot absorb peaks</span></div></div>
-<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-power class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Stop-the-world deploys</b><br/><span class="text-sm opacity-60">PROD is stopped to upgrade, no blue/green</span></div></div>
-<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-wrench class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Complex pipeline</b><br/><span class="text-sm opacity-60">pull-based hybrid, Puppet-driven</span></div></div>
+<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-database class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Single-node MongoDB</b><br/><span class="text-sm opacity-60">reliability and architecture at risk</span><div class="flex items-center gap-1.5 mt-1.5 text-xs font-semibold" style="color:#2C5446"><lucide-check class="w-3.5 h-3.5 shrink-0"/><span>Managed, Multi-AZ, resilient and scalable</span></div></div></div>
+<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-move-horizontal class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">No horizontal scaling</b><br/><span class="text-sm opacity-60">several components cannot absorb peaks</span><div class="flex items-center gap-1.5 mt-1.5 text-xs font-semibold" style="color:#2C5446"><lucide-check class="w-3.5 h-3.5 shrink-0"/><span>Elastic, scales with demand, no fixed capacity</span></div></div></div>
+<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-power class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">No zero-downtime deploys</b><br/><span class="text-sm opacity-60">PROD is stopped for every upgrade</span><div class="flex items-center gap-1.5 mt-1.5 text-xs font-semibold" style="color:#2C5446"><lucide-check class="w-3.5 h-3.5 shrink-0"/><span>Blue/green rollouts, zero downtime</span></div></div></div>
+<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-wrench class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Pipeline to simplify</b><br/><span class="text-sm opacity-60">Puppet / Docker / Kubernetes =&gt; Terraform</span><div class="flex items-center gap-1.5 mt-1.5 text-xs font-semibold" style="color:#2C5446"><lucide-check class="w-3.5 h-3.5 shrink-0"/><span>One Terraform IaC, simple CI/CD</span></div></div></div>
 
 </div>
 
 <!--
 These are the concrete pain points the migration addresses. The memory-leak restart and the
 single-node MongoDB are the most visible.
+
+Formulation : Pourquoi on va beneficier du cloud. Tourner ca en mode simplifier
 -->
 
 ---
@@ -128,34 +131,37 @@ single-node MongoDB are the most visible.
 
 <div class="text-sm opacity-70 -mt-1">Not a lift-and-shift: we retire the hybrid setup for managed services (Atlas, ALB) and a single deployment model.</div>
 
-<div class="mt-5 flex justify-center">
+<div class="mt-6 flex items-center justify-center gap-3 text-xs">
 
-```mermaid {scale: 0.62}
-architecture-beta
-  group ext(logos:aws)[External account internet facing]
-  group int(logos:aws)[Internal account on prem access]
+<div class="flex flex-col items-center gap-1 w-20 shrink-0"><lucide-globe class="w-7 h-7" style="color:#6b6b6b"/><span class="font-semibold">Internet</span><span class="opacity-50 text-center leading-tight">issuers, EAMs</span></div>
 
-  service net(internet)[Issuers EAMs] 
-  service waf(logos:aws-waf)[WAF ALB] in ext
-  service arest(logos:aws-fargate)[Issuer adapters] in ext
-  service fw(logos:aws-vpc)[VPC inspector HTTPS only]
-  service core(logos:aws-fargate)[Core services] in int
-  service iad(logos:aws-ecs)[Internal adapters] in int
-  service db(logos:mongodb-icon)[MongoDB Atlas] in int
-  service dc(server)[Pictet on prem DC]
+<lucide-arrow-right class="w-5 h-5 opacity-40 shrink-0"/>
 
-  net:R --> L:waf
-  waf:R --> L:arest
-  arest:R --> L:fw
-  fw:R --> L:core
-  core:R --> L:iad
-  core:B --> T:db
-  iad:R --> L:dc
-```
+<div class="rounded-xl border-2 px-3 py-2.5 flex flex-col gap-2" style="border-color:#A04044;background:#fdf3f4">
+<div class="flex items-center gap-1 text-[10px] font-bold tracking-wide" style="color:#A04044"><logos-aws class="w-3.5 h-3.5"/>EXTERNAL ACCOUNT</div>
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-waf class="w-6 h-6"/><span class="font-medium whitespace-nowrap">WAF + ALB</span></div>
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-fargate class="w-6 h-6"/><span class="font-medium whitespace-nowrap">Issuer adapters</span></div>
+</div>
+
+<div class="flex flex-col items-center gap-1 w-16 shrink-0"><logos-aws-vpc class="w-6 h-6"/><span class="opacity-50 text-center leading-tight">VPC inspector, HTTPS only</span></div>
+
+<div class="rounded-xl border-2 px-3 py-2.5 flex flex-col gap-2" style="border-color:#A04044;background:#fdf3f4">
+<div class="flex items-center gap-1 text-[10px] font-bold tracking-wide" style="color:#A04044"><logos-aws class="w-3.5 h-3.5"/>INTERNAL ACCOUNT</div>
+<div class="grid grid-cols-2 gap-2">
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-fargate class="w-6 h-6"/><span class="font-medium whitespace-nowrap">Core services</span></div>
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><lucide-database class="w-6 h-6" style="color:#6b6b6b"/><span class="font-medium whitespace-nowrap">In-memory grid</span></div>
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-ecs class="w-6 h-6"/><span class="font-medium whitespace-nowrap">Internal adapters</span></div>
+<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-mongodb-icon class="w-6 h-6"/><span class="font-medium whitespace-nowrap">MongoDB Atlas</span></div>
+</div>
+</div>
+
+<div class="flex flex-col items-center shrink-0 w-12"><lucide-arrow-right class="w-5 h-5 opacity-40"/><span class="opacity-50 text-center leading-tight mt-0.5">DX/VPN</span></div>
+
+<div class="flex flex-col items-center gap-1 w-20 shrink-0"><lucide-building-2 class="w-7 h-7" style="color:#6b6b6b"/><span class="font-semibold text-center leading-tight">On-prem</span><span class="opacity-50 text-center leading-tight">PTS, PWM, data</span></div>
 
 </div>
 
-<div class="mt-3 text-center text-sm opacity-60">Issuers and EAMs enter through the external account. PTS and PWM traders reach the core from on-prem, over the private link.</div>
+<div class="mt-4 text-center text-sm opacity-60">Issuers and EAMs enter through the external account. PTS and PWM traders reach the core from on-prem, over the private link.</div>
 
 <div class="mt-4 flex items-center justify-center gap-2 text-xs">
 <span class="opacity-45 mr-1">Shared across both accounts</span>
@@ -170,59 +176,89 @@ Step 1 is a replatform, not a lift-and-shift. Today's hybrid is retired: the ded
 HAProxy servers (push-based Puppet) plus the pull-based GitOps on Kubernetes give way to managed
 MongoDB Atlas, AWS ALB, and one deployment model. External account holds the internet ingress and
 issuer adapters; internal account holds the core, internal adapters and Atlas, reaching on-prem via
-DX/VPN. VPC inspector between, HTTPS only.
+DX/VPN. VPC inspector between, HTTPS only. Atlas keeps the same engine for the cutover, zero
+compatibility risk. The in-memory grid and the switch to DocumentDB are phase 2 work.
+
+
+Sous validation des ADRs en cours.
 -->
 
 ---
 
 # Target architecture, step 2: cloud-native
 
-<div class="text-sm opacity-70 -mt-1">After the refactor: Lambda adapters behind an API gateway, a simplified scalable core, no in-memory grid.</div>
+<div class="text-sm opacity-70 -mt-1">Same accounts, same flows, same security model as step 1. The refactor changes six things inside them.</div>
 
-<div class="mt-6 flex items-center justify-center gap-3 text-xs">
+<div class="mt-5 max-w-4xl mx-auto">
 
-<div class="flex flex-col items-center gap-1 w-20 shrink-0"><lucide-globe class="w-7 h-7" style="color:#6b6b6b"/><span class="font-semibold">Internet</span><span class="opacity-50 text-center leading-tight">issuers, EAMs</span></div>
-
-<lucide-arrow-right class="w-5 h-5 opacity-40 shrink-0"/>
-
-<div class="rounded-xl border-2 px-3 py-2.5 flex flex-col gap-2" style="border-color:#A04044;background:#fbeef0">
-<div class="flex items-center gap-1 text-[10px] font-bold tracking-wide" style="color:#A04044"><logos-aws class="w-3.5 h-3.5"/>EXTERNAL ACCOUNT</div>
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-api-gateway class="w-6 h-6"/><span class="font-medium whitespace-nowrap">API Gateway + WAF</span></div>
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><div class="flex gap-1"><logos-aws-lambda class="w-5 h-5"/><logos-aws-lambda class="w-5 h-5"/><logos-aws-lambda class="w-5 h-5"/></div><span class="font-medium whitespace-nowrap">Issuer adapters</span></div>
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2 mb-1.5 text-xs">
+<div></div>
+<div class="text-[0.6rem] uppercase tracking-widest font-bold text-center" style="color:#A04044">After step 1</div>
+<div></div>
+<div class="text-[0.6rem] uppercase tracking-widest font-bold text-center" style="color:#29445A">After step 2</div>
+<div></div>
 </div>
 
-<div class="flex flex-col items-center gap-1 w-14 shrink-0"><logos-aws-vpc class="w-6 h-6"/><span class="opacity-50 text-center leading-tight">VPC inspector</span></div>
+<div class="flex flex-col gap-2 text-sm">
 
-<div class="rounded-xl border-2 px-3 py-2.5 flex flex-col gap-2" style="border-color:#29445A;background:#eef2f5">
-<div class="flex items-center gap-1 text-[10px] font-bold tracking-wide" style="color:#29445A"><logos-aws class="w-3.5 h-3.5"/>INTERNAL ACCOUNT</div>
-<div class="grid grid-cols-2 gap-2">
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-fargate class="w-6 h-6"/><span class="font-medium whitespace-nowrap">Scalable core</span></div>
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-eventbridge class="w-6 h-6"/><span class="font-medium whitespace-nowrap">EventBridge</span></div>
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><div class="flex gap-1"><logos-aws-lambda class="w-5 h-5"/><logos-aws-lambda class="w-5 h-5"/></div><span class="font-medium whitespace-nowrap">Internal adapters</span></div>
-<div class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-white shadow-sm"><logos-aws-documentdb class="w-6 h-6"/><span class="font-medium whitespace-nowrap">DocumentDB</span></div>
-</div>
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">Ingress</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><logos-aws-waf class="w-4 h-4"/>WAF + ALB</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-api-gateway class="w-4 h-4"/>API Gateway + WAF</div>
+<div class="text-xs opacity-55">throttling and auth at the edge</div>
 </div>
 
-<div class="flex flex-col items-center shrink-0 w-12"><lucide-arrow-right class="w-5 h-5 opacity-40"/><span class="opacity-50 text-center leading-tight mt-0.5">DX/VPN</span></div>
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">Adapters</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><logos-aws-fargate class="w-4 h-4"/>Containers, always on</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-lambda class="w-4 h-4"/>Lambda functions</div>
+<div class="text-xs opacity-55">scale to zero, pay per call</div>
+</div>
 
-<div class="flex flex-col items-center gap-1 w-20 shrink-0"><lucide-building-2 class="w-7 h-7" style="color:#6b6b6b"/><span class="font-semibold text-center leading-tight">On-prem</span><span class="opacity-50 text-center leading-tight">PTS, PWM, data</span></div>
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">Core</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><logos-aws-fargate class="w-4 h-4"/>Stateful, fixed size</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-fargate class="w-4 h-4"/>Stateless, scales out</div>
+<div class="text-xs opacity-55">sized to load, not to peak</div>
+</div>
+
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">State</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><lucide-database class="w-4 h-4"/>In-memory data grid</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-documentdb class="w-4 h-4"/>DocumentDB</div>
+<div class="text-xs opacity-55">state survives restarts</div>
+</div>
+
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">Database</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><logos-mongodb-icon class="w-4 h-4"/>MongoDB Atlas</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-documentdb class="w-4 h-4"/>DocumentDB</div>
+<div class="text-xs opacity-55">same API, a fraction of the run cost</div>
+</div>
+
+<div class="grid grid-cols-[84px_235px_24px_235px_1fr] items-center gap-x-2">
+<div class="text-[0.65rem] uppercase tracking-widest opacity-50 text-right pr-1">Integration</div>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border bg-white" style="border-color:#dcb0b3"><lucide-arrow-left-right class="w-4 h-4"/>Point-to-point calls</div>
+<lucide-arrow-right class="w-4 h-4 opacity-40 mx-auto"/>
+<div class="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg border-2 bg-white" style="border-color:#29445A"><logos-aws-eventbridge class="w-4 h-4"/>EventBridge</div>
+<div class="text-xs opacity-55">decoupled, replayable events</div>
+</div>
 
 </div>
 
-<div class="mt-3 text-center text-sm opacity-60">Issuers and EAMs hit the API gateway; PTS and PWM traders reach the core from on-prem. Adapters run as Lambdas, the core scales horizontally, and the in-memory grid is gone.</div>
+<div class="mt-5 text-center text-[0.7rem] opacity-45">Everything else carries over from step 1: the two accounts, the VPC inspector, DX/VPN to on-prem, observability.</div>
 
-<div class="mt-4 flex items-center justify-center gap-2 text-xs">
-<span class="opacity-45 mr-1">Shared across both accounts</span>
-<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200"><logos-aws-eventbridge class="w-4 h-4"/>EventBridge</span>
-<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200"><logos-aws-cloudwatch class="w-4 h-4"/>CloudWatch</span>
-<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200"><logos-aws-secrets-manager class="w-4 h-4"/>Secrets Manager</span>
-<span class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200"><logos-aws-s3 class="w-4 h-4"/>S3</span>
 </div>
 
 <!--
 After the cloud-native refactor: issuer and internal adapters run as Lambdas behind API Gateway,
 the core is stateless and scales horizontally on Fargate, state lives in Amazon DocumentDB, and the
-in-memory grid is removed. Function workloads move to FaaS, event-driven through EventBridge.
+in-memory database is removed. Function workloads move to FaaS, event-driven through EventBridge.
 -->
 
 ---
@@ -236,7 +272,7 @@ in-memory grid is removed. Function workloads move to FaaS, event-driven through
 <div>
 <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--pictet-red)">Phase 1: Replatform</div>
 <div class="flex flex-col gap-3">
-<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-copy class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Iso-functional, simpler stack</b><br/><span class="text-xs opacity-60">same app behavior; managed services replace the hybrid setup</span></div></div>
+<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-copy class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Iso-functional, simpler stack</b><br/><span class="text-xs opacity-60">same app behavior, managed services replace the hybrid setup</span></div></div>
 <div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-scale class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Parity</b><br/><span class="text-xs opacity-60">performance, security, resilience and audit at least equivalent</span></div></div>
 <div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-workflow class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Modern operations</b><br/><span class="text-xs opacity-60">single push-based CI/CD, IaC, blue/green deploys</span></div></div>
 </div>
@@ -245,9 +281,9 @@ in-memory grid is removed. Function workloads move to FaaS, event-driven through
 <div>
 <div class="text-xs uppercase tracking-widest mb-3 opacity-50">Phase 2: Leverage the cloud</div>
 <div class="flex flex-col gap-3">
-<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-trending-up class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Elasticity</b><br/><span class="text-xs opacity-60">autoscaling on demand; scale down to 20% on nights and weekends</span></div></div>
+<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-trending-up class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Elasticity</b><br/><span class="text-xs opacity-60">autoscaling on demand, scale down to 20% on nights and weekends</span></div></div>
 <div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-heart-pulse class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>High availability</b><br/><span class="text-xs opacity-60">multi-AZ, self-healing, automated DR and failover tests</span></div></div>
-<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-zap class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Serverless and cloud-native</b><br/><span class="text-xs opacity-60">FaaS adapters on Lambda, DocumentDB, no in-memory grid</span></div></div>
+<div class="p-4 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-3"><div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-zap class="w-5 h-5" style="color:var(--pictet-red)"/></div><div><b>Serverless and cloud-native</b><br/><span class="text-xs opacity-60">FaaS adapters on Lambda, DocumentDB, no in-memory database</span></div></div>
 </div>
 </div>
 
@@ -277,23 +313,31 @@ once the Pictet AWS platform services are available.
 
 <div class="text-xs uppercase tracking-widest font-semibold mb-1" style="color:var(--pictet-red)">Migrate</div>
 
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Preparation and POC</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:11.1%;width:11.1%;background:#A04044"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Replatforming on INTG</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:22.2%;width:5.6%;background:#A04044"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Cutover INTG</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:27.8%;width:5.6%;background:#A04044"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Roll out all envs to PROD</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:33.3%;width:16.7%;background:#A04044"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right italic opacity-70" style="width:200px">Migration complete</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 w-3 h-3 rotate-45 shadow-sm" style="left:50%;transform:translate(-50%,-50%) rotate(45deg);background:#A04044"></div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Preparation and POC</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:11.1%;width:8.3%;background:#A04044"></div><div class="absolute top-1/2 -translate-y-1/2 text-[10px] italic opacity-70 whitespace-nowrap" style="left:20.4%">POC OK</div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Migrate INTG</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:19.4%;width:13.9%;background:#A04044"></div><div class="absolute top-1/2 -translate-y-1/2 text-[10px] italic opacity-70 whitespace-nowrap" style="left:34.5%">INTG live</div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Migrate CTLQ</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:33.3%;width:8.3%;background:#A04044"></div><div class="absolute top-1/2 -translate-y-1/2 text-[10px] italic opacity-70 whitespace-nowrap" style="left:42.7%">CTLQ live</div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Migrate PROD</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:41.7%;width:8.3%;background:#A04044"></div><div class="absolute top-1/2 -translate-y-1/2 text-[10px] italic font-semibold opacity-80 whitespace-nowrap" style="left:51%">PROD live</div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Decommission on-prem</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:50%;width:8.3%;background:#A04044"></div></div></div>
 
-<div class="text-xs uppercase tracking-widest font-semibold mt-2 mb-1" style="color:#29445A">Make LionX cloud native</div>
+<div class="text-xs uppercase tracking-widest font-semibold mt-5 mb-2" style="color:#29445A">Make LionX cloud native</div>
 
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Horizontally scalable compute</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:33.3%;width:33.3%;background:#29445A"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Function workloads to FaaS</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:50%;width:33.3%;background:#29445A"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Replace in-memory data grid</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:50%;width:41.7%;background:#29445A"></div></div></div>
-<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Run and optimize</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded shadow-sm" style="left:83.3%;width:13.9%;background:#29445A"></div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Horizontally scalable compute</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-l shadow-sm" style="left:33.3%;width:33.3%;background:#29445A"></div><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-r" style="left:66.7%;width:6.7%;background:repeating-linear-gradient(-45deg,#29445A 0,#29445A 1.5px,transparent 1.5px,transparent 5px);border:1px solid #29445A;border-left:0"></div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Function workloads to FaaS</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-l shadow-sm" style="left:50%;width:33.3%;background:#29445A"></div><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-r" style="left:83.3%;width:6.7%;background:repeating-linear-gradient(-45deg,#29445A 0,#29445A 1.5px,transparent 1.5px,transparent 5px);border:1px solid #29445A;border-left:0"></div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Replace in-memory database</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-l shadow-sm" style="left:50%;width:41.7%;background:#29445A"></div><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-r" style="left:91.7%;width:8.3%;background:repeating-linear-gradient(-45deg,#29445A 0,#29445A 1.5px,transparent 1.5px,transparent 5px);border:1px solid #29445A;border-left:0"></div></div></div>
+<div class="flex items-center h-7"><div class="shrink-0 pr-3 text-right opacity-80" style="width:200px">Run and optimize</div><div class="flex-1 relative h-full"><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-l shadow-sm" style="left:83.3%;width:13.9%;background:#29445A"></div><div class="absolute top-1/2 -translate-y-1/2 h-4 rounded-r" style="left:97.2%;width:2.8%;background:repeating-linear-gradient(-45deg,#29445A 0,#29445A 1.5px,transparent 1.5px,transparent 5px);border:1px solid #29445A;border-left:0"></div></div></div>
 
 <div class="absolute top-0 bottom-0 pointer-events-none" style="left:200px;right:8px">
 <div class="absolute top-0 bottom-0" style="left:16.7%">
 <div class="absolute top-0 bottom-0 left-0 w-0.5 -translate-x-1/2" style="background:var(--pictet-red)"></div>
 <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1 whitespace-nowrap text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm" style="color:#ffffff;background:var(--pictet-red)">We are here</div>
+</div>
+<div class="absolute top-0 bottom-0" style="left:58.3%">
+<div class="absolute top-0 bottom-0 left-0 -translate-x-1/2 border-l border-dashed" style="border-color:#3D3A31;opacity:0.4"></div>
+<div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1 whitespace-nowrap text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm" style="color:#ffffff;background:#3D3A31">Migration complete</div>
+</div>
+<div class="absolute top-0 bottom-0" style="left:91.7%">
+<div class="absolute top-0 bottom-0 left-0 -translate-x-1/2 border-l border-dashed" style="border-color:#3D3A31;opacity:0.4"></div>
+<div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1 whitespace-nowrap text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm" style="color:#ffffff;background:#3D3A31">Cloud-native</div>
 </div>
 </div>
 
@@ -311,11 +355,18 @@ once the Pictet AWS platform services are available.
 
 </div>
 
-<div class="mt-3 text-center text-sm opacity-60">Production on AWS by mid 2027, fully cloud-native by end 2028.</div>
+<div class="mt-3 flex justify-center gap-6 text-xs">
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm inline-block" style="background:#A04044"></span>Phase 1: migrate</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm inline-block" style="background:#29445A"></span>Phase 2: cloud-native</span>
+</div>
+
+<div class="mt-2 text-center text-sm opacity-60">First environment live by end 2026, production on AWS by mid 2027.</div>
 
 <!--
 The first four phases get every environment to AWS and decommission on-prem. The modernization
 phases overlap and continue after PROD: observability and security, then exiting GigaSpaces.
+
+Detailler  INTG / CTLQ / PROD. vAjouter les jalons
 -->
 
 ---
@@ -326,7 +377,7 @@ phases overlap and continue after PROD: observability and security, then exiting
 
 <div class="grid grid-cols-2 grid-rows-2 gap-5 mt-5 h-[18rem] text-left">
 
-<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-share-2 class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Shared Pictet services</b><br/><span class="text-sm opacity-60">their maturity paces us; possible temporary dual monitoring</span></div></div>
+<div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-share-2 class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Shared Pictet services</b><br/><span class="text-sm opacity-60">their maturity paces us, possible temporary dual monitoring</span></div></div>
 <div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-waypoints class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Network complexity</b><br/><span class="text-sm opacity-60">on-prem links, issuer connectivity, firewall inspection</span></div></div>
 <div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-triangle-alert class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Replatforming surprises</b><br/><span class="text-sm opacity-60">different IO, network and timeout behavior in the cloud</span></div></div>
 <div class="p-5 rounded-xl bg-white border border-gray-200 shadow-md flex items-center gap-4"><div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:#f6e7e8"><lucide-heart-pulse class="w-6 h-6" style="color:var(--pictet-red)"/></div><div><b class="text-base">Service continuity</b><br/><span class="text-sm opacity-60">adapting operations and on-call during ramp-up</span></div></div>
@@ -337,14 +388,17 @@ phases overlap and continue after PROD: observability and security, then exiting
 
 <!--
 The biggest external dependency is the maturity of shared Pictet platform services. Ownership of
-infra scanning and intrusion detection is still to be confirmed with the cyber-security team.
+infra scanning and intrusion detection is still to be confirmed with the cyber-security team.|
+
+
+Retirer point virguel
 -->
 
 ---
 
-# Migration effort
+# Migration effort: Phase 1
 
-<div class="text-sm opacity-70 -mt-1">One-time effort to replatform onto AWS, CI/CD from Bamboo to GitHub included. Phase 1 only, not the cloud-native refactor.</div>
+<div class="text-sm opacity-70 -mt-1">One-time effort to replatform onto AWS, CI/CD from Bamboo to GitHub included.</div>
 
 <div class="mt-6 flex flex-col gap-2.5">
 
@@ -358,7 +412,7 @@ infra scanning and intrusion detection is still to be confirmed with the cyber-s
 
 <div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Testing, cutover and rollout</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:100%"><div class="h-full" style="width:83.33%;background:#A04044"></div><div class="h-full" style="width:16.67%;background:#A04044;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>75</b> <span class="opacity-50 text-xs">MD</span></div></div>
 
-<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Project management</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:60%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>45</b> <span class="opacity-50 text-xs">MD</span></div></div>
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Project management</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:60%"><div class="h-full" style="width:83.33%;background:#A04044"></div><div class="h-full" style="width:16.67%;background:#A04044;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>45</b> <span class="opacity-50 text-xs">MD</span></div></div>
 
 </div>
 
@@ -375,27 +429,118 @@ infra scanning and intrusion detection is still to be confirmed with the cyber-s
 <!--
 One-time build cost for the replatform, CI/CD migration included. Excludes the cloud-native
 refactor (Phase 2). Man-days are a bottom-up estimate; the day rate is a placeholder to adjust.
+Migration effort phase 1. 
+++ Couts aujourd'hui // Avant et apres pour le TCO ++++ Jour homme dev // pour mettre en evidence RED = Phase 1.
 -->
 
 ---
 
-# Cost, milestone and governance
+# Migration effort: Phase 2
 
-<div class="text-sm opacity-70 -mt-1">Zurich list prices, 5 environments at 8 vCPU / 32 GB. Atlas is billed per node; DocumentDB non-prod pauses on weekends.</div>
+<div class="text-sm opacity-70 -mt-1">Development effort for the cloud-native refactor. A rougher estimate than Phase 1, higher uncertainty.</div>
 
-<div class="mt-5"><CostPie /></div>
+<div class="mt-6 flex flex-col gap-2.5">
 
-<div class="mt-4 text-center text-xs opacity-55">Figures are firm through 2027. For the cloud-native years (2028+), budget a ~25% contingency, so plan ~$157k for the optimized target.</div>
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Replace the in-memory database</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:100%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>120</b> <span class="opacity-50 text-xs">MD</span></div></div>
 
-<div class="mt-4 flex items-center justify-center gap-3 text-xs">
-<span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200"><lucide-users class="w-3.5 h-3.5" style="color:var(--pictet-red)"/>Run ~1.5 FTE/year</span>
-<span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200"><lucide-flag class="w-3.5 h-3.5" style="color:var(--pictet-red)"/>Integration env on AWS, end 2026</span>
-<span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200"><lucide-users-round class="w-3.5 h-3.5" style="color:var(--pictet-red)"/>Cloud committee</span>
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Stateless, scalable core</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:66.7%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>80</b> <span class="opacity-50 text-xs">MD</span></div></div>
+
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Function workloads to FaaS</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:58.3%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>70</b> <span class="opacity-50 text-xs">MD</span></div></div>
+
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Event-driven and observability</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:50%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>60</b> <span class="opacity-50 text-xs">MD</span></div></div>
+
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Testing and hardening</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:50%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>60</b> <span class="opacity-50 text-xs">MD</span></div></div>
+
+<div class="flex items-center gap-3"><div class="w-56 shrink-0 text-right text-sm opacity-80">Project management</div><div class="flex-1 h-5 rounded bg-gray-100 relative"><div class="absolute inset-y-0 left-0 rounded overflow-hidden flex" style="width:33.3%"><div class="h-full" style="width:83.33%;background:#29445A"></div><div class="h-full" style="width:16.67%;background:#29445A;opacity:0.38"></div></div></div><div class="w-16 text-right text-sm"><b>40</b> <span class="opacity-50 text-xs">MD</span></div></div>
+
+</div>
+
+<div class="flex justify-center gap-6 text-xs mt-3">
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm inline-block" style="background:#29445A"></span>estimate</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm inline-block" style="background:#29445A;opacity:0.38"></span>20% margin</span>
+</div>
+
+<div class="mt-5 flex items-center justify-center gap-16 text-center">
+<div><div class="text-3xl font-bold" style="color:#29445A">~520</div><div class="text-xs opacity-55">man-days (430 + 20% margin)</div></div>
+<div><div class="text-3xl font-bold" style="color:#29445A">~2.3</div><div class="text-xs opacity-55">FTE-year</div></div>
+</div>
+
+<!--
+Phase 2 = cloud-native refactor. Development estimate, higher uncertainty than Phase 1. The
+in-memory database removal is the main driver. Bottom-up, to be refined with the team.
+-->
+
+---
+
+# The cost curve
+
+<div class="text-sm opacity-70 -mt-1">Run cost, in CHF per year, from Zurich list prices. Atlas through the replatform, DocumentDB after, plus 25% contingency.</div>
+
+<div class="mt-4 flex justify-center">
+<div style="position:relative;width:760px;height:235px">
+<svg viewBox="0 0 760 235" width="760" height="235" style="position:absolute;inset:0">
+<defs>
+<linearGradient id="phase1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#A04044" stop-opacity="0.16"/><stop offset="100%" stop-color="#A04044" stop-opacity="0"/></linearGradient>
+<linearGradient id="phase2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#29445A" stop-opacity="0.16"/><stop offset="100%" stop-color="#29445A" stop-opacity="0"/></linearGradient>
+</defs>
+<path d="M120,62 L400,71 L400,180 L120,180 Z" fill="url(#phase1)"/>
+<path d="M400,71 L660,88 L660,180 L400,180 Z" fill="url(#phase2)"/>
+<line x1="120" y1="180" x2="660" y2="180" stroke="#e3e3e3" stroke-width="1"/>
+<line x1="120" y1="62" x2="672" y2="62" stroke="#cfcfcf" stroke-width="1" stroke-dasharray="3 4"/>
+<path d="M120,135 L400,144" fill="none" stroke="#A04044" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round" stroke-opacity="0.75"/>
+<path d="M400,144 L660,152" fill="none" stroke="#29445A" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round" stroke-opacity="0.75"/>
+<circle cx="120" cy="135" r="3" fill="#A04044"/><circle cx="400" cy="144" r="3" fill="#A04044"/><circle cx="660" cy="152" r="3" fill="#29445A"/>
+<path d="M120,62 L400,71" fill="none" stroke="#A04044" stroke-width="4" stroke-linecap="round"/>
+<path d="M400,71 L660,88" fill="none" stroke="#29445A" stroke-width="4" stroke-linecap="round"/>
+<circle cx="120" cy="62" r="6" fill="#A04044" stroke="#fff" stroke-width="2.5"/>
+<circle cx="400" cy="71" r="6" fill="#A04044" stroke="#fff" stroke-width="2.5"/>
+<circle cx="660" cy="88" r="8" fill="#29445A" stroke="#fff" stroke-width="2.5"/>
+</svg>
+<div style="position:absolute;left:120px;top:48px;transform:translate(-50%,-100%);font-weight:bold;font-size:17px;color:#3D3A31">650k</div>
+<div style="position:absolute;left:400px;top:57px;transform:translate(-50%,-100%);font-weight:bold;font-size:16px;color:#3D3A31">~600k</div>
+<div style="position:absolute;left:432px;top:39px;font-weight:bold;font-size:11px;color:#fff;background:#A04044;border-radius:10px;padding:1px 8px">-8%</div>
+<div style="position:absolute;left:645px;top:73px;transform:translate(-50%,-100%);font-weight:bold;font-size:16px;color:#3D3A31">~505k</div>
+<div style="position:absolute;left:684px;top:54px;font-weight:bold;font-size:11px;color:#fff;background:#29445A;border-radius:10px;padding:1px 8px">-22%</div>
+<div style="position:absolute;left:260px;top:97px;transform:translateX(-50%);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#8a8f95">Team</div>
+<div style="position:absolute;left:400px;top:101px;transform:translateX(-50%);font-size:11px;font-weight:600;color:#9aa0a6">400k</div>
+<div style="position:absolute;left:600px;top:111px;transform:translateX(-50%);font-size:11px;font-weight:600;color:#9aa0a6">~350k</div>
+<div style="position:absolute;left:255px;top:153px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#8a8f95">Infra</div>
+<div style="position:absolute;left:120px;top:140px;transform:translateX(-50%);font-size:11px;font-weight:600;color:#9aa0a6">250k</div>
+<div style="position:absolute;left:400px;top:149px;transform:translateX(-50%);font-size:11px;font-weight:600;color:#9aa0a6">~200k</div>
+<div style="position:absolute;left:660px;top:156px;transform:translateX(-50%);font-size:11px;font-weight:600;color:#9aa0a6">~155k</div>
+<div style="position:absolute;left:120px;top:190px;transform:translateX(-50%);text-align:center"><div style="font-size:13px;font-weight:600;color:#3D3A31">On-prem</div><div style="font-size:11px;color:#9aa0a6">today</div></div>
+<div style="position:absolute;left:400px;top:190px;transform:translateX(-50%);text-align:center"><div style="font-size:13px;font-weight:600;color:#A04044">Replatform</div><div style="font-size:11px;color:#9aa0a6">Phase 1, iso-functional</div></div>
+<div style="position:absolute;left:660px;top:190px;transform:translateX(-50%);text-align:center"><div style="font-size:13px;font-weight:600;color:#29445A">Cloud-native</div><div style="font-size:11px;color:#9aa0a6">Phase 2, optimised</div></div>
+</div>
+</div>
+
+<div class="mt-5 flex items-center justify-center gap-10">
+<div class="text-center">
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50">One-time move</div>
+<div class="text-xl font-bold" style="color:#3D3A31">~1.4M CHF</div>
+<div class="text-[0.68rem] opacity-50">876 man-days, margins included</div>
+</div>
+<div class="w-px h-10 bg-gray-200"></div>
+<div class="text-center">
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50">Break-even</div>
+<div class="text-xl font-bold" style="color:#3D3A31">~9 years</div>
+<div class="text-[0.68rem] opacity-50">run alone, before the avoided refresh</div>
+</div>
+<div class="w-px h-10 bg-gray-200"></div>
+<div class="text-center">
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50">Not counted</div>
+<div class="text-xl font-bold" style="color:#3D3A31">Hardware refresh</div>
+<div class="text-[0.68rem] opacity-50">nor downtime, licences, ops gains past -12%</div>
+</div>
 </div>
 
 <!--
 Run cost is operations only. Infra is provisional and pre-PoC. The decisive milestone is the
 integration environment on AWS at the end of 2026, inside a real pipeline.
+
+
+Ca ressemble trop a un avant apres.
+Ajouter une marge. Replatforming, entre 180-200. Actuel vs futur
 -->
 
 ---
@@ -417,3 +562,12 @@ integration environment on AWS at the end of 2026, inside a real pipeline.
 <div class="mt-12 text-center">
 <div class="text-2xl font-semibold" style="color:var(--pictet-red)">Questions and discussion welcome</div>
 </div>
+
+<!--
+Manquant:
+
+Partie dev (Migration chiffrage),
+TCO actuel,
+Revoir les marges, ne pas que ca ressemble a un avant apres.
+Ajouter les jalons projet. Ajouter "sous validation des ADRs" dans la slide archi
+-->
