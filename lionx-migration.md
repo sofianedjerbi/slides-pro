@@ -177,7 +177,7 @@ Formulation : Pourquoi on va beneficier du cloud. Tourner ca en mode simplifier
 Step 1 is a replatform, not a lift-and-shift. Today's hybrid is retired: the dedicated MongoDB and
 HAProxy servers (push-based Puppet) plus the pull-based GitOps on Kubernetes give way to managed
 MongoDB Atlas, AWS ALB, and one deployment model. External account holds the internet ingress and
-issuer adapters; internal account holds the core, internal adapters and Atlas, reaching on-prem via
+issuer adapters. Internal account holds the core, internal adapters and Atlas, reaching on-prem via
 DX/VPN. VPC inspector between, HTTPS only. Atlas keeps the same engine for the cutover, zero
 compatibility risk. The in-memory grid and the switch to DocumentDB are phase 2 work.
 
