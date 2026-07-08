@@ -32,6 +32,19 @@
   margin-right: auto;
 }
 
+/* Export PDF : les box-shadows de Chromium deviennent des rectangles gris dans
+   certains viewers (Preview, GitHub). On les coupe a l'export (la page d'export
+   CLI enveloppe chaque slide dans .print-slide-container) et a l'impression
+   navigateur. Les bordures des cartes suffisent. */
+.print-slide-container * {
+  box-shadow: none !important;
+}
+@media print {
+  .slidev-layout * {
+    box-shadow: none !important;
+  }
+}
+
 /* Logo Pictet en bas à droite, ancré DANS chaque slide (pas en overlay viewport) */
 .pictet-footer {
   position: absolute;
